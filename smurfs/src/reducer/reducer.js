@@ -16,18 +16,35 @@ const reducer = (state = initialState, action) => {
             isFetching: true,
         };
         case 'FETCH_SMURF_SUCCESS':
+            // console.log(action.payload)
         return {
             ...state,
             error: '',
             isFetching: false,
-            smurf: action.payload
-            }
+            smurfs: action.payload
+        };
         case 'FETCH_SMURF_FAILURE':
         return {
             ...state,
             error: action.payload,
             isFetching: false,
-        }
+        };
+        case 'ADD_SMURF_START':
+            return {
+            ...state,
+            error: '',
+            };
+        case 'ADD_SMURF_SUCCESS':
+        return {
+            ...state,
+            error: '',
+            smurfs: action.payload
+        };
+        case 'ADD_SMURF_FAILURE':
+        return {
+            ...state,
+            error: action.payload
+        };
         default:
         return state
     }

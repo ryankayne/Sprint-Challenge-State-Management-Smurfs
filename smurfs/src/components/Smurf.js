@@ -14,9 +14,9 @@ export function Smurf (props) {
         <>
         <h1>Smurf Get</h1>
         <div>
-            {/* {props.smurfs.map(smurf => (
+            {props.smurfs.map(smurf => (
                 <h4 key={smurf.url}>{smurf.name}</h4>
-            ))} */}
+            ))}
         </div>
         {props.error && <p className='error'>{props.error}</p>}
         <button onClick={fetchSmurf}>Fetch Smurf</button> 
@@ -27,7 +27,7 @@ export function Smurf (props) {
 const mapStateToProps = state => {
     // console.log(state);
     return {
-    smurfs: state.smurf,
+    smurfs: state.smurfs,
     error: state.error
     }
 };

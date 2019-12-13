@@ -5,34 +5,34 @@ import { addSmurf } from '../actions/actions';
 
 function NewSmurf(props) {
     const [name, setName] = useState('');
-    const [age, setAge] = useState('');
+    const [age, setAge] = useState();
     const [height, setHeight] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (name === '') {
+        if (name == '') {
             return (
                 alert('Please add your name!')
             )
         }
-        if (age === '') {
+        if (age == '') {
             return (
                 alert("Please add your age!")
             )
         }
-        if (height === '') {
+        if (height == '') {
             return (
                 alert('Please add how tall the smurf is!')
             )
         }
         props.addSmurf({
             name: name,
-            age: age + ' years old',
-            height: height + ' cm',
+            age: age,
+            height: height,
         });
-        setName('')
-        setAge('')
-        setHeight('')
+        // setName('')
+        // setAge('')
+        // setHeight('')
     }
 
     const handleNameChange = e => {
@@ -62,10 +62,10 @@ function NewSmurf(props) {
     )
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     console.log(state)
     return {
-        smurfs: state.smurf
+        smurfs: state.smurfs
     }
 }
 const mapDispatchToProps = {

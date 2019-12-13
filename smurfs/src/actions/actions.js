@@ -21,16 +21,29 @@ export const getSmurf = () => dispatch => {
         })
     };
 
-export function addSmurf(newSmurf) {
+export const addSmurf = (newSmurf) => dispatch => {
+    console.log(newSmurf);
+    dispatch({ type: 'ADD_SMURF_START' });
+    axios
+        .post('http://localhost:3333/smurfs', newSmurf)
+        .then(res => {
+            console.log(res);
+            dispatch({type: 'ADD_SMURF_SUCCESS', payload: res.data})
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch({type: 'ADD_SMURF_FAILURE', payload: error.res})
+            });
+    }
+
+
+export function removeSmurf(removedSmurf) {
     return dispatch => {
-        dispatch({type: 'ADD_SMURF', payload: newSmurf})
+        dispatch({type: 'REMOVE_SMURF', payload: removedSmurf})
         axios
-            .post('http://localhost:3333/smurfs', newSmurf)
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+         .delete(`http://localhost:3333/smurfs/${removedSmurf.id}`)
+         .then((res) =>{
+             console.log(res)
+         })
     }
 }
