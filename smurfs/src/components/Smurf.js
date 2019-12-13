@@ -7,7 +7,7 @@ export function Smurf (props) {
     console.log(props);
     const fetchSmurf = e => {
         e.preventDefault();
-        console.log(props);
+        // console.log(props);
         props.getSmurf();
     };
     return (
